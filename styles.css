@@ -106,3 +106,54 @@ h2{font-size:1.7rem;margin-bottom:.3em;text-align:center}
 .footer .logo{color:#fff}
 .footer .logo-en{color:#999}
 .footer .muted{color:#999}
+
+/* ---- 美化升级 ---- */
+html{scroll-behavior:smooth}
+h2{display:flex;align-items:center;justify-content:center;gap:10px}
+h2::before,h2::after{content:"";height:2px;width:44px;background:linear-gradient(90deg,transparent,var(--accent));border-radius:2px}
+h2::after{background:linear-gradient(90deg,var(--accent),transparent)}
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"🍺🥤🍻";position:absolute;right:4%;bottom:8%;font-size:3rem;opacity:.14;letter-spacing:.4em;pointer-events:none}
+.brand-card{transition:transform .18s ease,box-shadow .18s ease}
+.brand-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(139,30,30,.14)}
+.card{transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.btn{transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(139,30,30,.25)}
+.contact-card{transition:transform .15s ease,box-shadow .15s ease}
+.contact-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(139,30,30,.16)}
+.slogan-row span{background:rgba(255,255,255,.25);padding:6px 16px;border-radius:20px}
+
+/* ---- 下单区 ---- */
+.order-section{background:linear-gradient(180deg,#fff, #faf6f0)}
+.steps-flow{display:flex;align-items:stretch;justify-content:center;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+.step{display:flex;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;flex:1;min-width:220px;max-width:300px}
+.step-num{display:flex;align-items:center;justify-content:center;width:38px;height:38px;flex:none;
+  background:var(--brand);color:#fff;font-weight:800;border-radius:50%;font-size:1.1rem}
+.step strong{color:var(--brand)}
+.step p{color:var(--muted);font-size:.9rem;margin-top:4px}
+.step p a{color:var(--brand);font-weight:700;text-decoration:none}
+.step-arrow{align-self:center;font-size:1.6rem;color:var(--accent);font-weight:800}
+@media(max-width:760px){.step-arrow{display:none}}
+.stock-warning{background:#fff3f3;border:2px solid #e05252;border-radius:10px;padding:14px 18px;
+  text-align:center;margin-bottom:22px;font-size:1.05rem}
+.stock-warning a{color:#b91c1c;font-weight:800}
+.order-form h3{color:var(--brand);margin-top:6px}
+.beer-list{display:grid;gap:10px;margin-bottom:8px}
+.beer-row{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;
+  background:#fbf9f5;border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.beer-row img{width:64px;height:64px;object-fit:contain;border-radius:8px;background:#fff}
+.beer-row .bname{font-weight:700}
+.beer-row .bname span{color:var(--muted);font-weight:400;font-size:.9rem}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:34px;height:34px;border-radius:50%;border:2px solid var(--brand);background:#fff;
+  color:var(--brand);font-size:1.2rem;font-weight:800;cursor:pointer;line-height:1}
+.stepper button:hover{background:var(--brand);color:#fff}
+.stepper .qty{min-width:64px;text-align:center;font-weight:800;font-size:1.05rem}
+.stepper .unit{color:var(--muted);font-size:.85rem}
+.check{display:flex !important;flex-direction:row !important;align-items:center;gap:10px;cursor:pointer;
+  background:#fff8e6;border:1px solid #ecd9a8;border-radius:8px;padding:12px 14px}
+.check input{width:20px;height:20px;accent-color:var(--brand)}
+.order-total{background:#1d1d1d;color:#fff;border-radius:10px;padding:14px 18px;font-size:1.1rem;
+  display:flex;justify-content:space-between;align-items:center}
+.order-total strong{color:var(--accent);font-size:1.3rem}

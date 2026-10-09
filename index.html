@@ -15,8 +15,8 @@
     <nav class="nav">
       <a href="#beer">啤酒 Beer</a>
       <a href="#drinks">饮料 Beverages</a>
+      <a href="#order">下单 Order</a>
       <a href="#lifestyle">生活用品 Life</a>
-      <a href="#why">批发优势</a>
       <a href="#contact">联系我们</a>
     </nav>
     <a class="btn btn-primary" href="#contact">立即询价</a>
@@ -30,7 +30,8 @@
     <p class="lede">酒吧 · 饭店 · 加油站 · Deli · 熟食店 —— 进货就找我们。<br>
     啤酒饮料品种齐全，欢迎纽约各零售商联络，合作共赢！</p>
     <div class="hero-cta">
-      <a class="btn btn-primary btn-lg" href="#contact">获取批发报价</a>
+      <a class="btn btn-primary btn-lg" href="#order">🍺 啤酒下单</a>
+      <a class="btn btn-ghost btn-lg" href="#contact">获取批发报价</a>
       <a class="btn btn-ghost btn-lg" href="tel:+19173623277">📞 917-362-3277</a>
     </div>
   </div>
@@ -72,6 +73,36 @@
       <div class="brand-card"><img src="images/bev-monster.jpg" alt="Monster"><p>Monster<br><span>魔爪</span></p></div>
       <div class="brand-card"><img src="images/bev-polandspring.jpg" alt="Poland Spring"><p>Poland Spring<br><span>波兰泉矿泉水</span></p></div>
     </div>
+  </div>
+</section>
+
+<section id="order" class="section order-section">
+  <div class="wrap">
+    <h2>🍺 啤酒在线下单 <span class="h-en">Beer Order</span></h2>
+    <p class="section-sub">三步搞定，隔天送货</p>
+
+    <div class="steps-flow">
+      <div class="step"><span class="step-num">1</span><div><strong>打电话确认有货</strong><p><a href="tel:+19173623277">📞 917-362-3277</a><br>下单前请务必先电话确认库存</p></div></div>
+      <div class="step-arrow">→</div>
+      <div class="step"><span class="step-num">2</span><div><strong>在线提交订单</strong><p>填写下方订单，明细直发我们邮箱</p></div></div>
+      <div class="step-arrow">→</div>
+      <div class="step"><span class="step-num">3</span><div><strong>隔天安排送货</strong><p>收到订单后我们隔天安排送货上门</p></div></div>
+    </div>
+
+    <div class="stock-warning">⚠️ <strong>下单前请先打电话确认是否有货：<a href="tel:+19173623277">917-362-3277</a></strong></div>
+
+    <form id="beer-order-form" class="form order-form">
+      <h3>选择啤酒（按件）</h3>
+      <div id="beer-list" class="beer-list"></div>
+      <h3>收货信息</h3>
+      <label>姓名 Name<input name="name" required placeholder="您的姓名 / Your name"></label>
+      <label>电话 Phone<input name="phone" required placeholder="联系电话"></label>
+      <label>送货地址 Delivery address<textarea name="address" required rows="2" placeholder="街道、城市、邮编"></textarea></label>
+      <label>备注 Notes<textarea name="notes" rows="2" placeholder="如：希望送货时间、其他需求（选填）"></textarea></label>
+      <label class="check"><input type="checkbox" id="stock-confirmed" required> <span>我已打电话确认过有货</span></label>
+      <button class="btn btn-primary btn-lg" type="submit">提交订单 Submit Order</button>
+      <p id="order-status" class="status"></p>
+    </form>
   </div>
 </section>
 

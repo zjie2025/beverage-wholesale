@@ -54,6 +54,7 @@ msgForm.addEventListener('submit', async (e) => {
   ms.push({who: name, text, time: now, bot: false});
   saveMessages(ms); renderBoard();
 
+
   setTimeout(() => {
     const ms2 = loadMessages();
     ms2.push({who: '批发站助手 (自动回复)', text: autoReply(text), time: now, bot: true});
@@ -82,3 +83,88 @@ msgForm.addEventListener('submit', async (e) => {
 });
 
 renderBoard();
+
+
+/* ---------- 啤酒在线下单 ---------- */
+const BEERS = [
+  {id:'budweiser', name:'Budweiser', cn:'百威', img:'images/beer-budweiser.jpg'},
+  {id:'budlight', name:'Bud Light', cn:'百威淡啤', img:'images/beer-budlight.jpg'},
+  {id:'corona', name:'Corona Extra', cn:'科罗娜', img:'images/beer-corona.jpg'},
+  {id:'heineken', name:'Heineken', cn:'喜力', img:'images/beer-heineken.jpg'},
+  {id:'modelo', name:'Modelo Especial', cn:'莫德罗', img:'images/beer-modelo.jpg'},
+  {id:'ultra', name:'Michelob Ultra', cn:'米开罗超纯', img:'images/beer-michelobultra.jpg'},
+];
+const beerQty = {};
+const beerList = document.getElementById('beer-list');
+
+if (beerList) {
+  BEERS.forEach(b => {
+    beerQty[b.id] = 0;
+    const row = document.createElement('div');
+    row.className = 'beer-row';
+    row.innerHTML = `
+      <img src="${b.img}" alt="${b.name}" loading="lazy">
+      <div class="bname">${b.name}<br><span>${b.cn}</span></div>
+      <div class="stepper">
+        <button type="button" data-act="dec" data-id="${b.id}" aria-label="减少">−</button>
+        <span class="qty" id="qty-${b.id}">0</span><span class="unit">件</span>
+        <button type="button" data-act="inc" data-id="${b.id}" aria-label="增加">＋</button>
+      </div>`;
+    beerList.appendChild(row);
+  });
+
+  const totalBar = document.createElement('div');
+  totalBar.className = 'order-total';
+  totalBar.innerHTML = `<span>共计 Total</span><strong><span id="total-cases">0</span> 件 cases</strong>`;
+  beerList.after(totalBar);
+
+  beerList.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-act]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    beerQty[id] = Math.max(0, Math.min(999, beerQty[id] + (btn.dataset.act === 'inc' ? 1 : -1)));
+    document.getElementById('qty-' + id).textContent = beerQty[id];
+    document.getElementById('total-cases').textContent =
+      Object.values(beerQty).reduce((a, c) => a + c, 0);
+  });
+
+  const orderForm = document.getElementById('beer-order-form');
+  const orderStatus = document.getElementById('order-status');
+  orderForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const items = BEERS.filter(b => beerQty[b.id] > 0)
+      .map(b => `${b.name}(${b.cn}) x ${beerQty[b.id]}件`).join('\n');
+    if (!items) {
+      orderStatus.textContent = '请先选择至少一件啤酒。Please select at least 1 case.';
+      orderStatus.className = 'status err';
+      return;
+    }
+    const fd = new FormData(orderForm);
+    const total = Object.values(beerQty).reduce((a, c) => a + c, 0);
+    orderStatus.textContent = '提交中… Submitting…';
+    orderStatus.className = 'status';
+    try {
+      await fetch('https://formsubmit.co/ajax/zjie2025@gmail.com', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({
+          _subject: `🍺 啤酒订单 Beer Order — ${fd.get('name')}（共${total}件）`,
+          _template: 'table',
+          _autoresponse: `您好 ${fd.get('name')}，\n\n您的啤酒订单已收到（共 ${total} 件），我们将在隔天安排送货。\n\n订单明细：\n${items}\n\n如有问题请致电：917-362-3277\n\n— 纽约酒水批发站`,
+          name: fd.get('name'), phone: fd.get('phone'),
+          address: fd.get('address'), notes: fd.get('notes') || '无',
+          items, total_cases: total,
+          stock_confirmed_by_phone: '是 Yes'
+        })
+      });
+      orderStatus.textContent = `✅ 订单已提交！共 ${total} 件，我们隔天安排送货。Order received — delivery the next day.`;
+      orderStatus.className = 'status ok';
+      orderForm.reset();
+      BEERS.forEach(b => { beerQty[b.id] = 0; document.getElementById('qty-' + b.id).textContent = '0'; });
+      document.getElementById('total-cases').textContent = '0';
+    } catch {
+      orderStatus.textContent = '提交失败，请直接打电话下单：917-362-3277';
+      orderStatus.className = 'status err';
+    }
+  });
+}
