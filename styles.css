@@ -59,6 +59,9 @@ h2{font-size:1.7rem;margin-bottom:.3em;text-align:center}
 .brand-card img{border-radius:0;aspect-ratio:1;object-fit:contain;width:100%;padding:14px;background:#fff}
 .brand-card p{padding:10px 8px 14px;font-weight:700}
 .brand-card p span{color:var(--muted);font-weight:400;font-size:.9rem}
+.product-link{text-decoration:none;color:inherit;display:block}
+.product-emoji{font-size:3.4rem;padding:22px 0 6px;text-align:center}
+.card-cta{display:inline-block;margin:0 0 16px;color:var(--brand);font-weight:700;font-size:.95rem}
 
 /* cards */
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
