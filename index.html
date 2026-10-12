@@ -15,8 +15,10 @@
     <nav class="nav">
       <a href="#beer">啤酒 Beer</a>
       <a href="#drinks">饮料 Beverages</a>
-      <a href="#order">下单 Order</a>
+      <a href="#delivery">配送 Delivery</a>
+      <a href="order.html">下单 Order</a>
       <a href="#lifestyle">生活用品 Life</a>
+      <a href="#about">关于 About</a>
       <a href="#contact">联系我们</a>
     </nav>
     <a class="btn btn-primary" href="#contact">立即询价</a>
@@ -30,7 +32,7 @@
     <p class="lede">酒吧 · 饭店 · 加油站 · Deli · 熟食店 —— 进货就找我们。<br>
     啤酒饮料品种齐全，欢迎纽约各零售商联络，合作共赢！</p>
     <div class="hero-cta">
-      <a class="btn btn-primary btn-lg" href="#order">🍺 啤酒下单</a>
+      <a class="btn btn-primary btn-lg" href="order.html">🛒 在线下单</a>
       <a class="btn btn-ghost btn-lg" href="#contact">获取批发报价</a>
       <a class="btn btn-ghost btn-lg" href="tel:+19173623277">📞 917-362-3277</a>
     </div>
@@ -42,6 +44,19 @@
     <span>🍺 品牌齐全，一件也批</span>
     <span>💰 量大价优，长期合作更优惠</span>
     <span>🤝 欢迎纽约各零售商联络</span>
+  </div>
+</section>
+
+<section id="delivery" class="section">
+  <div class="wrap">
+    <h2>配送服务 <span class="h-en">Delivery</span></h2>
+    <p class="section-sub">纽约地区 · 隔天送货上门</p>
+    <div class="cards">
+      <div class="card"><h3>🚚 隔天送货</h3><p>订单确认后，隔天安排送货上门，省心省力。</p></div>
+      <div class="card"><h3>🗺️ 纽约地区覆盖</h3><p>人在纽约，服务纽约地区各零售商，沟通方便、响应快。</p></div>
+      <div class="card"><h3>📦 灵活起批</h3><p>一件起批，不用囤货；量大长期合作，价格更优惠。</p></div>
+      <div class="card"><h3>📞 先确认再下单</h3><p>下单前请先电话确认库存：<a href="tel:+19173623277" style="color:var(--brand);font-weight:700">917-362-3277</a>。</p></div>
+    </div>
   </div>
 </section>
 
@@ -77,32 +92,17 @@
 </section>
 
 <section id="order" class="section order-section">
-  <div class="wrap">
-    <h2>🍺 啤酒在线下单 <span class="h-en">Beer Order</span></h2>
-    <p class="section-sub">三步搞定，隔天送货</p>
-
+  <div class="wrap narrow center">
+    <h2>🛒 在线下单 <span class="h-en">Order Online</span></h2>
+    <p class="section-sub">啤酒 · 饮料全部可选，三步搞定，隔天送货</p>
     <div class="steps-flow">
-      <div class="step"><span class="step-num">1</span><div><strong>打电话确认有货</strong><p><a href="tel:+19173623277">📞 917-362-3277</a><br>下单前请务必先电话确认库存</p></div></div>
+      <div class="step"><span class="step-num">1</span><div><strong>打电话确认有货</strong><p><a href="tel:+19173623277">📞 917-362-3277</a></p></div></div>
       <div class="step-arrow">→</div>
-      <div class="step"><span class="step-num">2</span><div><strong>在线提交订单</strong><p>填写下方订单，明细直发我们邮箱</p></div></div>
+      <div class="step"><span class="step-num">2</span><div><strong>在线提交订单</strong><p>选货、填地址，明细直发我们邮箱</p></div></div>
       <div class="step-arrow">→</div>
-      <div class="step"><span class="step-num">3</span><div><strong>隔天安排送货</strong><p>收到订单后我们隔天安排送货上门</p></div></div>
+      <div class="step"><span class="step-num">3</span><div><strong>隔天安排送货</strong><p>收到订单后隔天送货上门</p></div></div>
     </div>
-
-    <div class="stock-warning">⚠️ <strong>下单前请先打电话确认是否有货：<a href="tel:+19173623277">917-362-3277</a></strong></div>
-
-    <form id="beer-order-form" class="form order-form">
-      <h3>选择啤酒（按件）</h3>
-      <div id="beer-list" class="beer-list"></div>
-      <h3>收货信息</h3>
-      <label>姓名 Name<input name="name" required placeholder="您的姓名 / Your name"></label>
-      <label>电话 Phone<input name="phone" required placeholder="联系电话"></label>
-      <label>送货地址 Delivery address<textarea name="address" required rows="2" placeholder="街道、城市、邮编"></textarea></label>
-      <label>备注 Notes<textarea name="notes" rows="2" placeholder="如：希望送货时间、其他需求（选填）"></textarea></label>
-      <label class="check"><input type="checkbox" id="stock-confirmed" required> <span>我已打电话确认过有货</span></label>
-      <button class="btn btn-primary btn-lg" type="submit">提交订单 Submit Order</button>
-      <p id="order-status" class="status"></p>
-    </form>
+    <a class="btn btn-primary btn-lg" href="order.html">前往下单页面 →</a>
   </div>
 </section>
 
@@ -130,6 +130,14 @@
       <div class="card"><h3>🗽 纽约本地</h3><p>人在纽约，沟通方便，拿货快捷。</p></div>
       <div class="card"><h3>💬 报价透明</h3><p>来电或留言即报批发价，不玩套路。</p></div>
     </div>
+  </div>
+</section>
+
+<section id="about" class="section alt">
+  <div class="wrap narrow">
+    <h2>关于我们 <span class="h-en">About Us</span></h2>
+    <p class="center">纽约酒水批发站是纽约本地的酒水批发商，专注为酒吧、饭店、加油站、Deli 和熟食店供货。</p>
+    <p class="center" style="margin-top:1em">我们备有齐全的啤酒和饮料品牌，一件起批，让小店也能拿批发价。人在纽约，沟通方便、送货快捷，报价透明不玩套路。期待与纽约各零售商长期合作，共赢发展。</p>
   </div>
 </section>
 
