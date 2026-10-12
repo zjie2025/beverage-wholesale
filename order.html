@@ -36,18 +36,22 @@
       <h3>② 选择饮料 <span class="h-en">Beverages</span>（按件）</h3>
       <div id="drink-list" class="beer-list"></div>
 
+      <h3>③ 更多产品 <span class="h-en">More Products</span>（按件）</h3>
+      <p class="muted small" style="margin:-8px 0 12px">以下品牌接受预订，具体库存请电话确认</p>
+      <div id="more-list" class="catalog"></div>
+
       <div class="order-total"><span>订单共计 Total</span><strong><span id="total-cases">0</span> 件 cases</strong></div>
 
-      <h3>③ 联系方式 <span class="h-en">Contact</span></h3>
+      <h3>④ 联系方式 <span class="h-en">Contact</span></h3>
       <label>姓名 Name<input name="name" required placeholder="您的姓名 / Your name"></label>
       <label>电话 Phone<input name="phone" required placeholder="联系电话"></label>
       <label>邮箱 Email（选填）<input name="email" type="email" placeholder="方便我们回复您"></label>
 
-      <h3>④ 送货地址 <span class="h-en">Delivery Address</span></h3>
+      <h3>⑤ 送货地址 <span class="h-en">Delivery Address</span></h3>
       <label>地址 Address<textarea name="address" required rows="2" placeholder="街道、城市、邮编"></textarea></label>
       <label>备注 Notes<textarea name="notes" rows="2" placeholder="如：希望送货时间、其他需求（选填）"></textarea></label>
 
-      <h3>⑤ 订单明细 <span class="h-en">Order Details</span></h3>
+      <h3>⑥ 订单明细 <span class="h-en">Order Details</span></h3>
       <div id="order-summary" class="board"><div class="board-empty">还没选货，请在上面选择需要的酒水。<br>No items yet — pick your beverages above.</div></div>
 
       <label class="check"><input type="checkbox" id="stock-confirmed" required> <span>我已打电话确认过有货</span></label>
@@ -86,7 +90,168 @@ const DRINKS = [
   {id:'monster', name:'Monster', cn:'魔爪', img:'images/bev-monster.jpg'},
   {id:'polandspring', name:'Poland Spring', cn:'波兰泉矿泉水', img:'images/bev-polandspring.jpg'},
 ];
-const ALL = BEERS.concat(DRINKS);
+const MORE = [
+  {id:"m-yuengling", name:"Yuengling", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-presidente", name:"Presidente", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-warsteiner-5l-keg", name:"Warsteiner 5L Keg", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-heineken-5l-keg", name:"Heineken 5L Keg", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-guinness-extra-stout", name:"Guinness Extra Stout", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-natural-light", name:"Natural Light", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-busch-light", name:"Busch Light", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-foster-s-lager", name:"Foster's Lager", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-landshark-lager", name:"Landshark Lager", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-rolling-rock", name:"Rolling Rock", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-narragansett", name:"Narragansett", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-redd-s-hard-apple", name:"Redd's Hard Apple", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-leinenkugel-s-summer-shandy", name:"Leinenkugel's Summer Shandy", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-victoria", name:"Victoria", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-pacifico", name:"Pacifico", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-stella-artois", name:"Stella Artois", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-miller-lite", name:"Miller Lite", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-asahi", name:"Asahi", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-kirin-ichiban", name:"Kirin Ichiban", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-peroni", name:"Peroni", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-coors-light", name:"Coors Light", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-sapporo", name:"Sapporo", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-dragon-stout", name:"Dragon Stout", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-grolsch", name:"Grolsch", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-samuel-adams-boston-lager", name:"Samuel Adams Boston Lager", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-amstel-light", name:"Amstel Light", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-red-stripe", name:"Red Stripe", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-brooklyn-lager", name:"Brooklyn Lager", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-blue-moon", name:"Blue Moon", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-aguila", name:"Aguila", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-estrella-galicia", name:"Estrella Galicia", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-tecate", name:"Tecate", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-dos-equis", name:"Dos Equis", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-medalla-light", name:"Medalla Light", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-leffe-blond", name:"Leffe Blond", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-franziskaner", name:"Franziskaner", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-spaten", name:"Spaten", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-beck-s", name:"Beck's", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-shock-top", name:"Shock Top", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-hoegaarden", name:"Hoegaarden", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-voodoo-ranger-imperial-ipa", name:"Voodoo Ranger Imperial IPA", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-fat-tire-ale", name:"Fat Tire Ale", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-twisted-tea-original", name:"Twisted Tea Original", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-colt-45", name:"Colt 45", cat:"\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-duvel", name:"Duvel", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-chimay", name:"Chimay", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-ephemere", name:"Ephemere", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-la-chouffe", name:"La Chouffe", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-okocim", name:"Okocim", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-konig-pilsner", name:"Konig Pilsner", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-carlsberg", name:"Carlsberg", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-paulaner", name:"Paulaner", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-bitburger", name:"Bitburger", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-kronenbourg-1664", name:"Kronenbourg 1664", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-brewdog-punk-ipa", name:"Brewdog Punk IPA", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-kingfisher", name:"Kingfisher", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-red-horse", name:"Red Horse", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-san-miguel", name:"San Miguel", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-trappistes-rochefort", name:"Trappistes Rochefort", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-goose-island-bourbon-county", name:"Goose Island Bourbon County", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-lindemans", name:"Lindemans", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-krombacher-pils", name:"Krombacher Pils", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-kostritzer", name:"Kostritzer", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-spaten-2", name:"Spaten", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-crabbies-ginger-beer", name:"Crabbies Ginger Beer", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-bronx-brewery", name:"Bronx Brewery", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-kasztelan", name:"Kasztelan", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-hofbrau", name:"Hofbrau", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-mahou", name:"Mahou", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-ebbs-ipa", name:"Ebbs Ipa", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-taj-mahal", name:"Taj Mahal", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-3-floyds-zombie-dust", name:"3 Floyds Zombie Dust", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-five-boroughs-pilsner", name:"Five Boroughs Pilsner", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-goldstar", name:"Goldstar", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-victory-golden-monkey", name:"Victory Golden Monkey", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-sixpoint-resin-ipa", name:"Sixpoint Resin IPA", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-harpoon-ipa", name:"Harpoon IPA", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-montauk-wave-chaser-ipa", name:"Montauk Wave Chaser IPA", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-two-robbers", name:"Two Robbers", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-lagunitas-ipa", name:"Lagunitas IPA", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-flying-dog-double-dog", name:"Flying Dog Double Dog", cat:"\u7cbe\u917f/\u8fdb\u53e3\u5564\u9152", emoji:"\ud83c\udf7b"},
+  {id:"m-smirnoff-products", name:"Smirnoff Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-jack-daniel-s-cocktails", name:"Jack Daniel's Cocktails", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-mike-s-hard-lemonade-products", name:"Mike's Hard Lemonade Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-topo-chico-hard-seltzer", name:"Topo Chico Hard Seltzer", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-strongbow-gold-apple", name:"Strongbow Gold Apple", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-angry-orchard-products", name:"Angry Orchard Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-four-loko-products", name:"Four Loko Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-carib-shandy-products", name:"Carib Shandy Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-original-sin-cider-products", name:"Original Sin Cider Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-downeast-products", name:"Downeast Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-white-claw-products", name:"White Claw Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-truly-products", name:"Truly Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-happy-dad-products", name:"Happy Dad Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-simply-spiked-lemonade", name:"Simply Spiked Lemonade", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-the-beast-products", name:"The Beast Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-seagram-s-escapes", name:"Seagram's Escapes", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-austin-eastciders-products", name:"Austin Eastciders Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-ace-ciders-products", name:"Ace Ciders Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-blake-s-hard-cider", name:"Blake's Hard Cider", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-schofferhofer-products", name:"Schofferhofer Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-doc-s-draft", name:"Doc's Draft", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-jack-s-hard-cider", name:"Jack's Hard Cider", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-wolffer-dry-rose", name:"Wolffer Dry Rose", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-great-america-products", name:"Great America Products", cat:"\u786c\u82cf\u6253/\u82f9\u679c\u9152", emoji:"\ud83e\udd42"},
+  {id:"m-coors-edge-non-alcoholic", name:"Coors Edge Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-clausthaler-non-alcoholic", name:"Clausthaler Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-beck-s-non-alcoholic", name:"Beck's Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-erdinger-non-alcoholic", name:"Erdinger Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-reed-s-non-alcoholic-ginger-beer", name:"Reed's Non Alcoholic Ginger Beer", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-athletic-brewing-non-alcoholic-ipa", name:"Athletic Brewing Non-Alcoholic IPA", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-brooklyn-brewery-non-alcoholic", name:"Brooklyn Brewery Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-corona-non-alcoholic", name:"Corona Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-heineken-non-alcoholic", name:"Heineken Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-lagunitas-ipna-non-alcoholic", name:"Lagunitas IPNA Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-o-doul-s-non-alcoholic", name:"O'Doul's Non-Alcoholic", cat:"\u65e0\u9187\u5564\u9152", emoji:"\ud83c\udf7a"},
+  {id:"m-lolaio-sangria-products", name:"Lolaio Sangria Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-simply-fruit-products", name:"Simply Fruit Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-delirium-products", name:"Delirium Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-myx-products", name:"Myx Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-chateau-diana-products", name:"Chateau Diana Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-verdi-products", name:"Verdi Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-mauriello-products", name:"Mauriello Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-perisecco-products", name:"Perisecco Products", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-peptio-sangria", name:"Peptio Sangria", cat:"\u8461\u8404\u9152", emoji:"\ud83c\udf77"},
+  {id:"m-polar-seltzer-products", name:"Polar Seltzer Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-canada-dry-products", name:"Canada Dry Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-goya-products", name:"Goya Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-schweppes-products", name:"Schweppes Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-arizona-products", name:"Arizona Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-7-up-products", name:"7 Up Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-yoo-hoo-products", name:"Yoo-Hoo Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-celcius-products", name:"Celcius Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-core-water-products", name:"Core Water Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-fiji-water-products", name:"Fiji Water Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-voss-water-products", name:"Voss Water Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-essentia-products", name:"Essentia Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-smart-water-products", name:"Smart Water Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-vitamin-water-products", name:"Vitamin Water Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-niagara-water-products", name:"Niagara Water Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-body-armor-products", name:"Body Armor Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-arizona-tea-products", name:"Arizona Tea Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-snapple-products", name:"Snapple Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-lipton-tea-products", name:"Lipton Tea Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-pure-leaf-tea-products", name:"Pure Leaf Tea Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-san-pellegrino-products", name:"San Pellegrino Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-saratoga-sparkling-water", name:"Saratoga Sparkling Water", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-ramune-products", name:"Ramune Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-mexican-coke-products", name:"Mexican Coke Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-liquid-death-products", name:"Liquid Death Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-topo-chico-mineral-water", name:"Topo Chico Mineral Water", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-nesquik-products", name:"Nesquik Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-red-rock-products", name:"Red Rock Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-mott-s-products", name:"Mott's Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-powerade-products", name:"Powerade Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-hawaiian-punch", name:"Hawaiian Punch", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-dole-products", name:"Dole Products", cat:"\u6c7d\u6c34/\u6c34/\u8336/\u529f\u80fd\u996e\u6599", emoji:"\ud83e\udd64"},
+  {id:"m-small-7-pound-bag-of-ice", name:"Small 7 pound bag of ice", cat:"\u51b0", emoji:"\ud83e\uddca"},
+  {id:"m-large-42-pound-sleeve-of-ice", name:"Large 42 pound sleeve of ice", cat:"\u51b0", emoji:"\ud83e\uddca"},
+];
+const ALL = BEERS.concat(DRINKS).concat(MORE.map(p => ({id:p.id, name:p.name, cn:''})));
 const qty = {};
 ALL.forEach(p => qty[p.id] = 0);
 
@@ -108,6 +273,37 @@ function renderList(elId, items) {
 }
 renderList('beer-list', BEERS);
 renderList('drink-list', DRINKS);
+
+(function(){
+  const moreList = document.getElementById('more-list');
+  if (!moreList) return;
+  const cats = {};
+  MORE.forEach(p => { (cats[p.cat] = cats[p.cat] || []).push(p); qty[p.id] = 0; });
+  Object.keys(cats).forEach(cn => {
+    const items = cats[cn];
+    const det = document.createElement('details');
+    det.className = 'cat-details catalog';
+    const em = items[0].emoji;
+    det.innerHTML = '<summary>' + em + ' ' + cn + ' <span class="h-en">(' + items.length + ')</span></summary>';
+    const wrap = document.createElement('div');
+    items.forEach(p => {
+      const row = document.createElement('div');
+      row.className = 'beer-row';
+      row.innerHTML =
+        '<div class="mini-emoji">' + p.emoji + '</div>' +
+        '<div class="bname">' + p.name.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</div>' +
+        '<div class="stepper">' +
+        '<button type="button" data-act="dec" data-id="' + p.id + '" aria-label="减少">−</button>' +
+        '<span class="qty" id="qty-' + p.id + '">0</span><span class="unit">件</span>' +
+        '<button type="button" data-act="inc" data-id="' + p.id + '" aria-label="增加">＋</button>' +
+        '</div>';
+      wrap.appendChild(row);
+    });
+    det.appendChild(wrap);
+    moreList.appendChild(det);
+  });
+})();
+
 
 function selectedItems() {
   return ALL.filter(p => qty[p.id] > 0)
