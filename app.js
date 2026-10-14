@@ -12,7 +12,11 @@ function esc(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':
 
 function renderBoard() {
   const ms = loadMessages();
-  board.innerHTML = ms.length ? '' : '<div class="board-empty">还没有留言 — 欢迎询价！<br>No messages yet — ask us for a quote!</div>';
+  const en = (typeof I18N !== 'undefined' && I18N.get() === 'en');
+  const emptyHtml = en
+    ? '<div class="board-empty">No messages yet — ask us for a quote!</div>'
+    : '<div class="board-empty">还没有留言 — 欢迎询价！<br>No messages yet — ask us for a quote!</div>';
+  board.innerHTML = ms.length ? '' : emptyHtml;
   ms.forEach(m => {
     const div = document.createElement('div');
     div.className = 'msg' + (m.bot ? ' bot' : '');
@@ -189,3 +193,9 @@ if (beerList) {
     });
   });
 })();
+
+/* re-render message board empty state on language change */
+window.addEventListener('DOMContentLoaded', function () {
+  var prev = window.onLangChange;
+  window.onLangChange = function (l) { if (prev) prev(l); renderBoard(); };
+});
