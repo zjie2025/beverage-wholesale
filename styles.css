@@ -1,7 +1,7 @@
 :root{
-  --brand:#8B1E1E; --brand-dark:#6d1414; --accent:#D9A441;
-  --bg:#ffffff; --alt:#faf6f0; --text:#232323; --muted:#6b7280;
-  --line:#ece3d4; --radius:12px;
+  --brand:#1c6b57; --brand-dark:#134e3f; --accent:#c19a3d;
+  --bg:#ffffff; --alt:#f5f8f6; --text:#24312b; --muted:#68756f;
+  --line:#e3e9e6; --radius:12px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
@@ -37,17 +37,20 @@ h2{font-size:1.7rem;margin-bottom:.3em;text-align:center}
 .btn-ghost:hover{background:var(--brand);color:#fff}
 
 /* hero */
-.hero{padding:80px 0;background:linear-gradient(135deg,#2b0f0f 0%,#8B1E1E 60%,#a83232 100%);color:#fff;text-align:center}
-.hero .eyebrow{color:var(--accent);font-weight:700;letter-spacing:.1em;font-size:.85rem}
-.hero h1{color:#fff}
-.hero .lede{color:#f3e2c7;font-size:1.1rem}
+.hero{padding:88px 0;background:linear-gradient(180deg,#f2f7f4 0%,#e9f1ec 100%);color:var(--text);text-align:center;border-bottom:1px solid var(--line)}
+.hero .eyebrow{color:var(--brand);font-weight:700;letter-spacing:.12em;font-size:.85rem}
+.hero h1{color:var(--text)}
+.hero .lede{color:var(--muted);font-size:1.12rem}
 .hero-cta{display:flex;gap:14px;justify-content:center;margin-top:1.6em;flex-wrap:wrap}
-.hero .btn-ghost{background:transparent;color:#fff;border-color:#fff}
-.hero .btn-ghost:hover{background:#fff;color:var(--brand)}
+.hero .btn-ghost{background:#fff;color:var(--brand);border-color:var(--brand)}
+.hero .btn-ghost:hover{background:var(--brand);color:#fff}
+.hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.8em}
+.hero-badges span{background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:6px 16px;font-size:.88rem;color:var(--text);font-weight:600}
 
 /* slogans */
-.slogans{background:var(--accent);padding:14px 0}
-.slogan-row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;font-weight:700;color:#3a2a10}
+.slogans{background:#e8f0eb;padding:14px 0;border-bottom:1px solid var(--line)}
+.slogan-row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;font-weight:600;color:#2c4a40}
 
 /* brand grid */
 .brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -102,10 +105,10 @@ h2{font-size:1.7rem;margin-bottom:.3em;text-align:center}
 .small{font-size:.85rem}
 
 /* footer */
-.footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;background:#1d1d1d;color:#bbb}
+.footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;background:#20302a;color:#c4d0c9}
 .footer .logo{color:#fff}
-.footer .logo-en{color:#999}
-.footer .muted{color:#999}
+.footer .logo-en{color:#9fb0a8}
+.footer .muted{color:#9fb0a8}
 
 /* ---- 美化升级 ---- */
 html{scroll-behavior:smooth}
@@ -113,16 +116,15 @@ h2{display:flex;align-items:center;justify-content:center;gap:10px}
 h2::before,h2::after{content:"";height:2px;width:44px;background:linear-gradient(90deg,transparent,var(--accent));border-radius:2px}
 h2::after{background:linear-gradient(90deg,var(--accent),transparent)}
 .hero{position:relative;overflow:hidden}
-.hero::before{content:"🍺🥤🍻";position:absolute;right:4%;bottom:8%;font-size:3rem;opacity:.14;letter-spacing:.4em;pointer-events:none}
 .brand-card{transition:transform .18s ease,box-shadow .18s ease}
-.brand-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(139,30,30,.14)}
+.brand-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(28,107,87,.13)}
 .card{transition:transform .18s ease,box-shadow .18s ease}
-.card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.07)}
 .btn{transition:transform .12s ease,box-shadow .12s ease}
-.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(139,30,30,.25)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(28,107,87,.28)}
 .contact-card{transition:transform .15s ease,box-shadow .15s ease}
-.contact-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(139,30,30,.16)}
-.slogan-row span{background:rgba(255,255,255,.25);padding:6px 16px;border-radius:20px}
+.contact-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(28,107,87,.15)}
+.slogan-row span{background:rgba(255,255,255,.7);padding:6px 16px;border-radius:20px;border:1px solid var(--line)}
 
 /* ---- 下单区 ---- */
 .order-section{background:linear-gradient(180deg,#fff, #faf6f0)}
@@ -135,9 +137,9 @@ h2::after{background:linear-gradient(90deg,var(--accent),transparent)}
 .step p a{color:var(--brand);font-weight:700;text-decoration:none}
 .step-arrow{align-self:center;font-size:1.6rem;color:var(--accent);font-weight:800}
 @media(max-width:760px){.step-arrow{display:none}}
-.stock-warning{background:#fff3f3;border:2px solid #e05252;border-radius:10px;padding:14px 18px;
+.stock-warning{background:#fffaf0;border:2px solid #d9a441;border-radius:10px;padding:14px 18px;
   text-align:center;margin-bottom:22px;font-size:1.05rem}
-.stock-warning a{color:#b91c1c;font-weight:800}
+.stock-warning a{color:#92600a;font-weight:800}
 .order-form h3{color:var(--brand);margin-top:6px}
 .beer-list{display:grid;gap:10px;margin-bottom:8px}
 .beer-row{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;
@@ -154,9 +156,26 @@ h2::after{background:linear-gradient(90deg,var(--accent),transparent)}
 .check{display:flex !important;flex-direction:row !important;align-items:center;gap:10px;cursor:pointer;
   background:#fff8e6;border:1px solid #ecd9a8;border-radius:8px;padding:12px 14px}
 .check input{width:20px;height:20px;accent-color:var(--brand)}
-.order-total{background:#1d1d1d;color:#fff;border-radius:10px;padding:14px 18px;font-size:1.1rem;
+.order-total{background:#20302a;color:#fff;border-radius:10px;padding:14px 18px;font-size:1.1rem;
   display:flex;justify-content:space-between;align-items:center}
 .order-total strong{color:var(--accent);font-size:1.3rem}
+
+/* ---- 手机端底部拨号条 ---- */
+.sticky-call{display:none}
+@media(max-width:760px){
+  .sticky-call{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.08)}
+  .sticky-call a{flex:1;text-align:center;padding:13px 8px;text-decoration:none;font-weight:700;font-size:.95rem}
+  .sticky-call .call-now{color:#fff;background:var(--brand)}
+  .sticky-call .call-order{color:var(--brand)}
+  body{padding-bottom:52px}
+}
+
+/* ---- 产品目录搜索 ---- */
+.catalog-search{max-width:520px;margin:0 auto 20px}
+.catalog-search input{width:100%;padding:13px 18px;border:2px solid var(--line);border-radius:24px;
+  font-size:1rem;font-family:inherit;background:#fff}
+.catalog-search input:focus{outline:none;border-color:var(--brand)}
 
 /* ---- 产品目录 ---- */
 .catalog{display:grid;gap:12px}
