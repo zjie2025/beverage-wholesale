@@ -160,6 +160,13 @@ h2::after{background:linear-gradient(90deg,var(--accent),transparent)}
   display:flex;justify-content:space-between;align-items:center}
 .order-total strong{color:var(--accent);font-size:1.3rem}
 
+/* ---- 语言切换 ---- */
+.lang-toggle{background:#fff;border:2px solid var(--brand);color:var(--brand);border-radius:20px;
+  padding:6px 16px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit}
+.lang-toggle:hover{background:var(--brand);color:#fff}
+body.en .bname span{display:none}
+body.en .brand-card p span{display:none}
+
 /* ---- 手机端底部拨号条 ---- */
 .sticky-call{display:none}
 @media(max-width:760px){
