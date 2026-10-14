@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>在线下单 | 法拉盛啤酒饮料批发 · Beer Wholesale Flushing NY</title>
+<title data-en="Place an Order | Flushing Beverage Wholesale · Beer Wholesale Flushing NY">在线下单 | 法拉盛啤酒饮料批发 · Beer Wholesale Flushing NY</title>
 <meta name="description" content="法拉盛酒水批发在线下单：172个品牌啤酒饮料一件起批，填联系方式和送货地址，订单直发商家，隔天送货。电话 917-362-3277。">
 <link rel="canonical" href="https://zjie2025.github.io/beverage-wholesale/order.html">
 <link rel="stylesheet" href="styles.css">
@@ -14,49 +14,50 @@
   <div class="wrap header-inner">
     <a class="logo" href="index.html">纽约酒水批发站<span class="logo-en">NY Beverage Wholesale</span></a>
     <nav class="nav">
-      <a href="index.html#beer">啤酒 Beer</a>
-      <a href="index.html#drinks">饮料 Beverages</a>
-      <a href="order.html">下单 Order</a>
-      <a href="index.html#contact">联系我们</a>
+      <a href="index.html#beer" data-en="Beer">啤酒 Beer</a>
+      <a href="index.html#drinks" data-en="Beverages">饮料 Beverages</a>
+      <a href="order.html" data-en="Order">下单 Order</a>
+      <a href="index.html#contact" data-en="Contact Us">联系我们</a>
     </nav>
+    <button class="lang-toggle" type="button">EN</button>
     <a class="btn btn-primary" href="tel:+19173623277">📞 917-362-3277</a>
   </div>
 </header>
 
 <section class="section order-section">
   <div class="wrap">
-    <h2>🛒 在线下单 <span class="h-en">Place an Order</span></h2>
-    <p class="section-sub">选货 → 填信息 → 点确定，订单自动发到我们邮箱，隔天送货</p>
+    <h2 data-en="🛒 Place an Order">🛒 在线下单 <span class="h-en">Place an Order</span></h2>
+    <p class="section-sub" data-en="Pick items → enter info → confirm. Orders go straight to our inbox, delivered next day.">选货 → 填信息 → 点确定，订单自动发到我们邮箱，隔天送货</p>
 
-    <div class="stock-warning">⚠️ <strong>下单前请先打电话确认是否有货：<a href="tel:+19173623277">917-362-3277</a></strong></div>
+    <div class="stock-warning" data-en='⚠️ <strong>Please call to confirm stock before ordering: <a href="tel:+19173623277">917-362-3277</a></strong>'>⚠️ <strong>下单前请先打电话确认是否有货：<a href="tel:+19173623277">917-362-3277</a></strong></div>
 
     <form id="order-form" class="form order-form">
-      <h3>① 选择啤酒 <span class="h-en">Beer</span>（按件）</h3>
+      <h3 data-en="① Beer (by the case)">① 选择啤酒 <span class="h-en">Beer</span>（按件）</h3>
       <div id="beer-list" class="beer-list"></div>
 
-      <h3>② 选择饮料 <span class="h-en">Beverages</span>（按件）</h3>
+      <h3 data-en="② Beverages (by the case)">② 选择饮料 <span class="h-en">Beverages</span>（按件）</h3>
       <div id="drink-list" class="beer-list"></div>
 
-      <h3>③ 更多产品 <span class="h-en">More Products</span>（按件）</h3>
-      <p class="muted small" style="margin:-8px 0 12px">以下品牌接受预订，具体库存请电话确认</p>
+      <h3 data-en="③ More Products (by the case)">③ 更多产品 <span class="h-en">More Products</span>（按件）</h3>
+      <p class="muted small" style="margin:-8px 0 12px" data-en="These brands are available for pre-order — please call to confirm stock">以下品牌接受预订，具体库存请电话确认</p>
       <div id="more-list" class="catalog"></div>
 
-      <div class="order-total"><span>订单共计 Total</span><strong><span id="total-cases">0</span> 件 cases</strong></div>
+      <div class="order-total"><span data-en="Order Total">订单共计 Total</span><strong><span id="total-cases">0</span> <span data-en="cases">件 cases</span></strong></div>
 
-      <h3>④ 联系方式 <span class="h-en">Contact</span></h3>
-      <label>姓名 Name<input name="name" required placeholder="您的姓名 / Your name"></label>
-      <label>电话 Phone<input name="phone" required placeholder="联系电话"></label>
-      <label>邮箱 Email（选填）<input name="email" type="email" placeholder="方便我们回复您"></label>
+      <h3 data-en="④ Contact">④ 联系方式 <span class="h-en">Contact</span></h3>
+      <label><span data-en="Name">姓名 Name</span><input name="name" required data-en-ph="Your name" placeholder="您的姓名 / Your name"></label>
+      <label><span data-en="Phone">电话 Phone</span><input name="phone" required data-en-ph="Phone number" placeholder="联系电话"></label>
+      <label><span data-en="Email (optional)">邮箱 Email（选填）</span><input name="email" type="email" data-en-ph="So we can reach you" placeholder="方便我们回复您"></label>
 
-      <h3>⑤ 送货地址 <span class="h-en">Delivery Address</span></h3>
-      <label>地址 Address<textarea name="address" required rows="2" placeholder="街道、城市、邮编"></textarea></label>
-      <label>备注 Notes<textarea name="notes" rows="2" placeholder="如：希望送货时间、其他需求（选填）"></textarea></label>
+      <h3 data-en="⑤ Delivery Address">⑤ 送货地址 <span class="h-en">Delivery Address</span></h3>
+      <label><span data-en="Address">地址 Address</span><textarea name="address" required rows="2" data-en-ph="Street, city, ZIP" placeholder="街道、城市、邮编"></textarea></label>
+      <label><span data-en="Notes">备注 Notes</span><textarea name="notes" rows="2" data-en-ph="e.g. preferred delivery time, other requests (optional)" placeholder="如：希望送货时间、其他需求（选填）"></textarea></label>
 
-      <h3>⑥ 订单明细 <span class="h-en">Order Details</span></h3>
+      <h3 data-en="⑥ Order Details">⑥ 订单明细 <span class="h-en">Order Details</span></h3>
       <div id="order-summary" class="board"><div class="board-empty">还没选货，请在上面选择需要的酒水。<br>No items yet — pick your beverages above.</div></div>
 
-      <label class="check"><input type="checkbox" id="stock-confirmed" required> <span>我已打电话确认过有货</span></label>
-      <button class="btn btn-primary btn-lg" type="submit">确定下单 Confirm Order</button>
+      <label class="check"><input type="checkbox" id="stock-confirmed" required> <span data-en="I have called to confirm stock availability">我已打电话确认过有货</span></label>
+      <button class="btn btn-primary btn-lg" type="submit" data-en="Confirm Order">确定下单 Confirm Order</button>
       <p id="order-status" class="status"></p>
     </form>
   </div>
@@ -65,11 +66,12 @@
 <footer class="footer">
   <div class="wrap footer-inner">
     <span class="logo">纽约酒水批发站<span class="logo-en">NY Beverage Wholesale</span></span>
-    <p class="muted small">一件起批 · 欢迎纽约各零售商联络</p>
+    <p class="muted small" data-en="1-case minimum · NYC retailers welcome">一件起批 · 欢迎纽约各零售商联络</p>
     <p class="muted small">© 2026 NY Beverage Wholesale. All rights reserved.</p>
   </div>
 </footer>
 
+<script src="i18n.js"></script>
 <script>
 /* 订单接收邮箱：如需更改只改这一行 */
 const ORDER_EMAIL = 'zjie2025@gmail.com';
@@ -254,12 +256,17 @@ const MORE = [
   {id:"m-small-7-pound-bag-of-ice", name:"Small 7 pound bag of ice", cat:"\u51b0", emoji:"\ud83e\uddca"},
   {id:"m-large-42-pound-sleeve-of-ice-6-bags", name:"Large 42 pound sleeve of ice (6 bags)", cat:"\u51b0", emoji:"\ud83e\uddca"},
 ];
+const CAT_EN = {"啤酒":"Beer","精酿/进口啤酒":"Specialty Beers","硬苏打/苹果酒":"Hard Seltzers & Ciders","无醇啤酒":"Non-Alcoholic Beers","葡萄酒":"Wines","汽水/水/茶/功能饮料":"Sodas, Water & More","冰":"Ice"};
+function L(){ return (typeof I18N !== 'undefined' && I18N.get() === 'en') ? 'en' : 'zh'; }
+function catName(cn){ return L() === 'en' ? (CAT_EN[cn] || cn) : cn; }
 const ALL = BEERS.concat(DRINKS).concat(MORE.map(p => ({id:p.id, name:p.name, cn:''})));
 const qty = {};
 ALL.forEach(p => qty[p.id] = 0);
 
 function renderList(elId, items) {
   const el = document.getElementById(elId);
+  el.innerHTML = '';
+  const en = L() === 'en';
   items.forEach(p => {
     const row = document.createElement('div');
     row.className = 'beer-row';
@@ -267,27 +274,27 @@ function renderList(elId, items) {
       '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy">' +
       '<div class="bname">' + p.name + '<br><span>' + p.cn + '</span></div>' +
       '<div class="stepper">' +
-      '<button type="button" data-act="dec" data-id="' + p.id + '" aria-label="减少">−</button>' +
-      '<span class="qty" id="qty-' + p.id + '">0</span><span class="unit">件</span>' +
-      '<button type="button" data-act="inc" data-id="' + p.id + '" aria-label="增加">＋</button>' +
+      '<button type="button" data-act="dec" data-id="' + p.id + '" aria-label="' + (en ? 'Decrease' : '减少') + '">−</button>' +
+      '<span class="qty" id="qty-' + p.id + '">' + (qty[p.id] || 0) + '</span><span class="unit">' + (en ? 'cases' : '件') + '</span>' +
+      '<button type="button" data-act="inc" data-id="' + p.id + '" aria-label="' + (en ? 'Increase' : '增加') + '">＋</button>' +
       '</div>';
     el.appendChild(row);
   });
 }
-renderList('beer-list', BEERS);
-renderList('drink-list', DRINKS);
 
-(function(){
+function renderMore(){
   const moreList = document.getElementById('more-list');
   if (!moreList) return;
+  moreList.innerHTML = '';
+  const en = L() === 'en';
   const cats = {};
-  MORE.forEach(p => { (cats[p.cat] = cats[p.cat] || []).push(p); qty[p.id] = 0; });
+  MORE.forEach(p => { (cats[p.cat] = cats[p.cat] || []).push(p); });
   Object.keys(cats).forEach(cn => {
     const items = cats[cn];
     const det = document.createElement('details');
     det.className = 'cat-details catalog';
     const em = items[0].emoji;
-    det.innerHTML = '<summary>' + em + ' ' + cn + ' <span class="h-en">(' + items.length + ')</span></summary>';
+    det.innerHTML = '<summary>' + em + ' ' + catName(cn) + ' <span class="h-en">(' + items.length + ')</span></summary>';
     const wrap = document.createElement('div');
     items.forEach(p => {
       const row = document.createElement('div');
@@ -296,16 +303,18 @@ renderList('drink-list', DRINKS);
         '<div class="mini-emoji">' + p.emoji + '</div>' +
         '<div class="bname">' + p.name.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</div>' +
         '<div class="stepper">' +
-        '<button type="button" data-act="dec" data-id="' + p.id + '" aria-label="减少">−</button>' +
-        '<span class="qty" id="qty-' + p.id + '">0</span><span class="unit">件</span>' +
-        '<button type="button" data-act="inc" data-id="' + p.id + '" aria-label="增加">＋</button>' +
+        '<button type="button" data-act="dec" data-id="' + p.id + '" aria-label="' + (en ? 'Decrease' : '减少') + '">−</button>' +
+        '<span class="qty" id="qty-' + p.id + '">' + (qty[p.id] || 0) + '</span><span class="unit">' + (en ? 'cases' : '件') + '</span>' +
+        '<button type="button" data-act="inc" data-id="' + p.id + '" aria-label="' + (en ? 'Increase' : '增加') + '">＋</button>' +
         '</div>';
       wrap.appendChild(row);
     });
     det.appendChild(wrap);
     moreList.appendChild(det);
   });
-})();
+}
+function renderAll(){ renderList('beer-list', BEERS); renderList('drink-list', DRINKS); renderMore(); }
+renderAll();
 
 
 function selectedItems() {
@@ -317,14 +326,16 @@ function refreshSummary() {
   const total = items.reduce((a, c) => a + c.n, 0);
   document.getElementById('total-cases').textContent = total;
   const box = document.getElementById('order-summary');
+  const en = L() === 'en';
   if (!items.length) {
-    box.innerHTML = '<div class="board-empty">还没选货，请在上面选择需要的酒水。<br>No items yet — pick your beverages above.</div>';
+    box.innerHTML = '<div class="board-empty">' + (en ? 'No items yet — pick your beverages above.' : '还没选货，请在上面选择需要的酒水。<br>No items yet — pick your beverages above.') + '</div>';
     return;
   }
   box.innerHTML = items.map(i =>
-    '<div class="msg"><div class="who">' + i.name + '（' + i.cn + '）<span class="time">x ' + i.n + ' 件</span></div></div>'
-  ).join('') + '<div class="msg bot"><div class="who">共计 Total<span class="time">' + total + ' 件 cases</span></div></div>';
+    '<div class="msg"><div class="who">' + i.name + (i.cn ? '（' + i.cn + '）' : '') + '<span class="time">x ' + i.n + (en ? ' cases' : ' 件') + '</span></div></div>'
+  ).join('') + '<div class="msg bot"><div class="who">' + (en ? 'Total' : '共计 Total') + '<span class="time">' + total + (en ? ' cases' : ' 件 cases') + '</span></div></div>';
 }
+window.onLangChange = function(){ renderAll(); refreshSummary(); };
 
 document.getElementById('order-form').addEventListener('click', e => {
   const btn = e.target.closest('button[data-act]');
@@ -339,38 +350,42 @@ document.getElementById('order-form').addEventListener('submit', async e => {
   e.preventDefault();
   const items = selectedItems();
   const status = document.getElementById('order-status');
+  const en = L() === 'en';
   if (!items.length) {
-    status.textContent = '请先选择至少一件酒水。Please select at least 1 case.';
+    status.textContent = en ? 'Please select at least 1 case.' : '请先选择至少一件酒水。Please select at least 1 case.';
     status.className = 'status err';
     return;
   }
   const fd = new FormData(e.target);
   const total = items.reduce((a, c) => a + c.n, 0);
-  const lines = items.map(i => i.name + '（' + i.cn + '） x ' + i.n + '件').join('\n');
-  status.textContent = '提交中… Submitting…';
+  const lines = items.map(i => i.name + (i.cn ? '（' + i.cn + '）' : '') + ' x ' + i.n + (en ? ' cases' : '件')).join('\n');
+  status.textContent = en ? 'Submitting…' : '提交中… Submitting…';
   status.className = 'status';
+  const autoZh = '您好 ' + fd.get('name') + '，\n\n您的酒水订单已收到（共 ' + total + ' 件），我们将在隔天安排送货。\n\n订单明细：\n' + lines + '\n\n送货地址：' + fd.get('address') + '\n\n如有问题请致电：917-362-3277\n\n— 纽约酒水批发站';
+  const autoEn = 'Hi ' + fd.get('name') + ',\n\nWe received your beverage order (' + total + ' cases total) and will deliver the next day.\n\nOrder details:\n' + lines + '\n\nDelivery address: ' + fd.get('address') + '\n\nQuestions? Call 917-362-3277\n\n— NY Beverage Wholesale';
   try {
     await fetch('https://formsubmit.co/ajax/' + ORDER_EMAIL, {
       method: 'POST',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify({
-        _subject: '🛒 酒水订单 Order — ' + fd.get('name') + '（共' + total + '件）',
+        _subject: '🛒 酒水订单 Order — ' + fd.get('name') + ' (' + total + (en ? ' cases)' : '件）'),
         _replyto: fd.get('email') || undefined,
         _template: 'table',
-        _autoresponse: '您好 ' + fd.get('name') + '，\n\n您的酒水订单已收到（共 ' + total + ' 件），我们将在隔天安排送货。\n\n订单明细：\n' + lines + '\n\n送货地址：' + fd.get('address') + '\n\n如有问题请致电：917-362-3277\n\n— 纽约酒水批发站',
+        _autoresponse: en ? autoEn : autoZh,
         name: fd.get('name'), phone: fd.get('phone'), email: fd.get('email') || '未填',
         address: fd.get('address'), notes: fd.get('notes') || '无',
         items: lines, total_cases: total,
         stock_confirmed_by_phone: '是 Yes'
       })
     });
-    status.textContent = '✅ 订单已提交！共 ' + total + ' 件，订单明细已发到我们邮箱，隔天安排送货。Order received — delivery the next day.';
+    status.textContent = en ? '✅ Order received! ' + total + ' cases — details sent to our inbox, delivery the next day.'
+      : '✅ 订单已提交！共 ' + total + ' 件，订单明细已发到我们邮箱，隔天安排送货。Order received — delivery the next day.';
     status.className = 'status ok';
     e.target.reset();
     ALL.forEach(p => { qty[p.id] = 0; document.getElementById('qty-' + p.id).textContent = '0'; });
     refreshSummary();
   } catch {
-    status.textContent = '提交失败，请直接打电话下单：917-362-3277';
+    status.textContent = (L() === 'en') ? 'Submission failed — please call to order: 917-362-3277' : '提交失败，请直接打电话下单：917-362-3277';
     status.className = 'status err';
   }
 });
