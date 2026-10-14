@@ -168,3 +168,24 @@ if (beerList) {
     }
   });
 }
+
+/* ---- 产品目录搜索 ---- */
+(function(){
+  var q = document.getElementById('catalog-q');
+  if (!q) return;
+  var dets = Array.prototype.slice.call(document.querySelectorAll('.catalog .cat-details'));
+  q.addEventListener('input', function(){
+    var kw = q.value.trim().toLowerCase();
+    dets.forEach(function(d){
+      var lis = d.querySelectorAll('.cat-list li');
+      var hits = 0;
+      lis.forEach(function(li){
+        var show = !kw || li.textContent.toLowerCase().indexOf(kw) !== -1;
+        li.style.display = show ? '' : 'none';
+        if (show) hits++;
+      });
+      d.style.display = hits ? '' : 'none';
+      if (kw) d.open = hits > 0;
+    });
+  });
+})();
